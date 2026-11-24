@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GA UI Testing</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Automated UI testing with genetic algorithms</h1>
+  <p>A GA generates sequences of user events (clicks, typing) that maximize coverage and find failures in the app. Inspired by Sapienz (Mao et al., 2016).</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1. Application under test</h2>
+    <p class="note">To-do list with 5 seeded bugs. You can use it by hand.</p>
+    <div id="app-demo"></div>
+  </section>
+
+  <section class="card">
+    <h2>2. Run the genetic algorithm</h2>
+    <form id="params" class="params">
+      <label>Seed <input name="seed" type="number" value="1"></label>
+      <label>Population N <input name="popSize" type="number" value="30" min="4"></label>
+      <label>Generations G <input name="generations" type="number" value="30" min="1"></label>
+      <label>Length L <input name="length" type="number" value="20" min="2"></label>
+      <label>p<sub>c</sub> <input name="pc" type="number" value="0.8" step="0.05" min="0" max="1"></label>
+      <label>p<sub>m</sub> <input name="pm" type="number" value="0.05" step="0.01" min="0" max="1"></label>
+      <button type="submit">Run GA</button>
+    </form>
+    <p id="status" class="note"></p>
+    <canvas id="chart" width="760" height="260"></canvas>
+    <div class="legend"><span class="l-best">Best fitness</span><span class="l-avg">Average fitness</span><span class="l-bugs">Bugs found (×10)</span></div>
+  </section>
+
+  <section class="card">
+    <h2>3. Generated test cases</h2>
+    <p class="note">Each failure is minimized (delta debugging) down to the shortest sequence that reproduces it.</p>
+    <div id="cases"></div>
+  </section>
+
+  <section class="card">
+    <h2>4. Experiment: GA vs. random testing</h2>
+    <p class="note">Same evaluation budget: N·(G+1). Repeated with several seeds.</p>
+    <label>Seeds <input id="seedCount" type="number" value="10" min="1"></label>
+    <button id="btnExp">Run experiment</button>
+    <div id="experiment"></div>
+    <details><summary>JSON data</summary><pre id="json"></pre></details>
+  </section>
+</main>
+
+<div id="sandbox" hidden></div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
