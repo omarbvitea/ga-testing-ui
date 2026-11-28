@@ -1,6 +1,6 @@
-import { run, minimize } from '../ga/executor.js';
+import { run, minimize } from '../runner/index.js';
 import { classify } from '../app/bugs.js';
-import { runGA } from '../ga/experiment.js';
+import { runGA } from '../experiment/index.js';
 
 const host = document.getElementById('sandbox');
 const cases = [];

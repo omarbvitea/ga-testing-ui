@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mulberry32, linearScale, roulette, onePointCrossover, mutate, evolve, randomChromosome } from '../ga/ga.js';
+import { mulberry32, linearScale, roulette, onePointCrossover, mutate, evolve, randomChromosome } from '../ga/index.js';
 
 test('the RNG with the same seed repeats the sequence', () => {
   const a = mulberry32(42), b = mulberry32(42);
